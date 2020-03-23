@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { City, FavoriteCities, Condition } from './../model/Objects';
+import { City, FavoriteCities, Condition, TemperatureType } from './../model/Objects';
 
 @Component({
   selector: 'favorites',
@@ -9,13 +9,9 @@ import { City, FavoriteCities, Condition } from './../model/Objects';
 })
 export class FavoritesComponent implements OnInit {
 
-  constructor(public FavoriteCities: FavoriteCities) { }
+  constructor(public FavoriteCities: FavoriteCities, public TemperatureType: TemperatureType) { }
 
   ngOnInit(): void {
-  }
-
-  routeTo(city: City) {
-    this.FavoriteCities.Cities[0].Condition.Temperature.Metric.Value
   }
 
 }

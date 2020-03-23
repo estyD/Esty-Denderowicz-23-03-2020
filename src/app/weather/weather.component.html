@@ -1,8 +1,9 @@
 <div class="div-container px-md-5">
 
+    <!--Indication for errors  -->
     <p-toast position="top-center" [hideTransitionOptions]="'500ms'"></p-toast>
 
-
+    <!--Search form  -->
     <div class="search-form py-5 px-md-0" [formGroup]="searchForm">
 
         <p-autoComplete formControlName="city" [suggestions]="cities" field="LocalizedName" (completeMethod)="searchCity($event)"
@@ -15,7 +16,7 @@
     </div>
 
 
-
+    <!--Weather details  -->
     <div class="condition-container" *ngIf="currentCity">
 
         <div class="city-details flex-container">
@@ -24,10 +25,12 @@
                 <img src="assets/location.png" width="50">
                 <div class="ml-3 my-auto">
                     <div>{{currentCity?.LocalizedName}}</div>
-                    <div>{{currentCondition?.Temperature?.Metric?.Value}}<span>℃</span></div>
+                    <div *ngIf="TemperatureType.Celsius">{{currentCondition?.Temperature?.Metric?.Value}}<span>°C</span></div>
+                    <div *ngIf="!TemperatureType.Celsius">{{currentCondition?.Temperature?.Imperial?.Value}}<span>°F</span></div>
                 </div>
             </div>
 
+            <!--'Add to favorites' button  -->
             <div class="d-flex pointer" (click)="setFavorite()">
                 <div *ngIf="!currentCity.isFavorite"><img src="assets/heart.jpg" width="20"> &nbsp; Add to Favorites</div>
                 <div *ngIf="currentCity.isFavorite"><img src="assets/heart.jpg" width="20"> &nbsp; Remove From Favorites</div>
@@ -35,11 +38,12 @@
         </div>
 
         <div class="center-big-text mt-4">
-            {{currentCondition?.WeatherText}} 
+            {{currentCondition?.WeatherText}}
             <span *ngIf="!currentCondition.HasPrecipitation"> No Precipitation</span>
             <span *ngIf="currentCondition.HasPrecipitation"> {{currentCondition?.PrecipitationIntensity}} {{currentCondition?.PrecipitationType}}</span>
         </div>
 
+        <!--5 days daily forecast - use component  -->
         <div class="days-forecast">
             <app-day-forcast class="mt-5 mx-3" *ngFor="let day of dailyForecasts" [day]="day.Date" [temperature]="day.Temperature.Maximum.Value"></app-day-forcast>
         </div>

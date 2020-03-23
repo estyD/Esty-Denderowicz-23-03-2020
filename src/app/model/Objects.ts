@@ -1,3 +1,5 @@
+// All models
+
 export class City {
 
     Key: string;
@@ -27,18 +29,23 @@ export class Condition {
     PrecipitationIntensity: string;
 
     Temperature: {
+
         Metric: {
+            Value?: number;
+        },
+
+        Imperial: {
             Value?: number;
         }
     }
 
-    constructor(WeatherText: string, HasPrecipitation: boolean, PrecipitationType: string, PrecipitationIntensity: string, Temperature?: number, WeatherIcon?: number) {
+    constructor(WeatherText: string, HasPrecipitation: boolean, PrecipitationType: string, PrecipitationIntensity: string, Temperature?: number, ImpTemperature?: number, WeatherIcon?: number) {
         this.WeatherText = WeatherText;
         this.WeatherIcon = WeatherIcon;
         this.HasPrecipitation = HasPrecipitation;
         this.PrecipitationType = PrecipitationType;
         this.PrecipitationIntensity = PrecipitationIntensity;
-        this.Temperature = { Metric: { Value: Temperature } };
+        this.Temperature = { Metric: { Value: Temperature }, Imperial: { Value: ImpTemperature } };
     }
 }
 
@@ -67,4 +74,9 @@ export class DailyForecast {
 export class FavoriteCities {
 
     Cities: {City: City, Condition: Condition}[] = [];
+}
+
+export class TemperatureType {
+
+    Celsius: boolean = true;
 }

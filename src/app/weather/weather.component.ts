@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+
 import { MessageService } from 'primeng/api';
 
 import { ApiService } from '../api.service'
-import { City, Condition, DailyForecast, FavoriteCities } from './../model/Objects';
+import { City, Condition, DailyForecast, FavoriteCities, TemperatureType } from './../model/Objects';
 
 @Component({
   selector: 'weather',
@@ -15,69 +16,83 @@ import { City, Condition, DailyForecast, FavoriteCities } from './../model/Objec
 export class WeatherComponent implements OnInit {
 
   cities: City[];
+
   searchForm: FormGroup;
-  get f() { return this.searchForm.controls; }
 
   currentCity: City;
+
   currentCondition: Condition;
+
   dailyForecasts: DailyForecast[];
 
-  sub;
+  sub: any;
+
+  flagTempType: boolean;
+
+  get f() { return this.searchForm.controls; }
 
   constructor(private fb: FormBuilder, private messageService: MessageService,
-    public apiService: ApiService, public FavoriteCities: FavoriteCities, private route: ActivatedRoute) {
+    public apiService: ApiService, public FavoriteCities: FavoriteCities, private route: ActivatedRoute,
+    public TemperatureType: TemperatureType) {
+
+    this.flagTempType = this.TemperatureType.Celsius;
+  }
+
+  //Check if the Temperature type has changed from header
+  ngAfterViewChecked() {
+    if (this.flagTempType != this.TemperatureType.Celsius) {
+      this.flagTempType = this.TemperatureType.Celsius;
+      this.get5DaysForecasts();
+    }
   }
 
   ngOnInit(): void {
 
+    // Validate 'english letter only' in autoComplete search
     this.searchForm = this.fb.group({
       city: ['', Validators.pattern('^[a-zA-Z ]*')]
     });
 
-    // Defaults to 'Tel Aviv' if no query param provided.
+    // Defaults to current location if no query param provided from Favorite page.
     this.sub = this.route
       .queryParams
       .subscribe(params => {
 
-        // if (params['key']) {
-          this.currentCity = new City(params['key'] || "215854", params['city'] || "Tel Aviv", params['key'] ? true : false);
-        // }
+        if (params['key']) {
+          this.currentCity = new City(params['key'], params['city'], true);
+          this.selectCity(this.currentCity);
+        }
 
-        // else if (!navigator.geolocation) {
-        //   this.messageService.add({ severity: 'error', summary: 'Geolocation Error', detail: 'Geolocation is not supported by your browser' });
-        // }
+        else if (!navigator.geolocation) {
+          this.messageService.add({ severity: 'error', summary: 'Geolocation Error', detail: 'Geolocation is not supported by your browser' });
+        }
 
-        // else {
-        //   navigator.geolocation.getCurrentPosition(
-        //     (data: any) => {
-        //       this.searchCityByGeoPosition(data["coords"]["latitude"], data["coords"]["longitude"])
-        //     },
-        //     error => {
-        //       this.messageService.add({ severity: 'error', summary: 'Geolocation Error', detail: 'Geolocation is not supported by your browser' });
-        //     }
-        //   );
-        // }
+        else {
+          navigator.geolocation.getCurrentPosition(
+            (data: any) => {
+              this.searchCityByGeoPosition(data["coords"]["latitude"], data["coords"]["longitude"])
+            },
+            error => {
+              this.messageService.add({ severity: 'error', summary: 'Geolocation Error', detail: 'Geolocation is not supported by your browser' });
+            }
+          );
+        }
 
       });
-
-
-    // this.selectCity(this.currentCity);
-    this.currentCondition = new Condition("Clear", false, null, null, 11.6, 33);
-    this.dailyForecasts = [
-      new DailyForecast(new Date("2020-03-22T07:00:00+02:00"), 18.4, 8.3),
-      new DailyForecast(new Date("2020-03-23T07:00:00+02:00"), 23.4, 15.2),
-      new DailyForecast(new Date("2020-03-24T07:00:00+02:00"), 22.4, 12.3),
-      new DailyForecast(new Date("2020-03-25T07:00:00+02:00"), 20.4, 11.3),
-      new DailyForecast(new Date("2020-03-26T07:00:00+02:00"), 24.4, 16.3),
-    ];
   }
 
+  //Get city key by geo-position
   searchCityByGeoPosition(lat, long) {
 
     this.apiService.getCitiesByGeoPosition(lat, long)
       .subscribe(
         (data: any) => {
+
           this.currentCity = data;
+
+          var favoriteCity = this.FavoriteCities.Cities.find(c => c.City.Key == this.currentCity.Key);
+          this.currentCity.isFavorite = favoriteCity ? true : false;
+
           this.selectCity(this.currentCity);
         },
         error => {
@@ -86,6 +101,7 @@ export class WeatherComponent implements OnInit {
       );
   }
 
+  //AutoComplete search
   searchCity(event) {
 
     if (this.searchForm.invalid) {
@@ -103,6 +119,7 @@ export class WeatherComponent implements OnInit {
       );
   }
 
+  //Get the current weather of the searched location or default location.
   selectCity(event: City) {
 
     this.currentCity = event;
@@ -117,7 +134,14 @@ export class WeatherComponent implements OnInit {
         }
       );
 
-    this.apiService.get5DaysForecasts(this.currentCity.Key)
+    this.get5DaysForecasts();
+
+  }
+
+  // Get the 5-day forecast of the searched location or default location.
+  get5DaysForecasts() {
+
+    this.apiService.get5DaysForecasts(this.currentCity.Key, this.TemperatureType.Celsius)
       .subscribe(
         (data: any) => {
           this.dailyForecasts = data["DailyForecasts"];
@@ -126,7 +150,6 @@ export class WeatherComponent implements OnInit {
           this.messageService.add({ severity: 'error', summary: 'Server Error', detail: error });
         }
       );
-
   }
 
   setFavorite() {

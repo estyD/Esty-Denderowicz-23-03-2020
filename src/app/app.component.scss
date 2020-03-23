@@ -1,0 +1,13 @@
+/*Responsive style for select temperatue-type input*/
+
+@media (min-width: 992px) {
+    .selectType-md {
+        display: none;
+    }
+}
+
+@media (max-width: 992px) {
+    .selectType-lg {
+        display: none;
+    }
+}

@@ -3,11 +3,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
-import {AutoCompleteModule} from 'primeng/autocomplete';
-import {ToastModule} from 'primeng/toast';
+import { AutoCompleteModule } from 'primeng/autocomplete';
+import { ToastModule } from 'primeng/toast';
+import { SelectButtonModule } from 'primeng/selectbutton';
 
-import { FavoriteCities } from './model/Objects';
+import { FavoriteCities, TemperatureType } from './model/Objects';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FavoritesComponent } from './favorites/favorites.component';
@@ -26,14 +28,16 @@ import { DayForcastComponent } from './weather/day-forcast/day-forcast.component
     BrowserAnimationsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    FormsModule,
     AppRoutingModule,
     AutoCompleteModule,
-    ToastModule
+    ToastModule,
+    SelectButtonModule
   ],
   exports: [
     DayForcastComponent
   ],
-  providers: [FavoriteCities],
+  providers: [FavoriteCities, TemperatureType],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

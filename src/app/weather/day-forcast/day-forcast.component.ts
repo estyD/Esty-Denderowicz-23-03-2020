@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { formatDate } from '@angular/common';
 
+import { TemperatureType } from './../../model/Objects';
+
 @Component({
   selector: 'app-day-forcast',
   templateUrl: './day-forcast.component.html',
@@ -11,7 +13,7 @@ export class DayForcastComponent implements OnInit {
   @Input() day : string;
   @Input() temperature : string;
 
-  constructor() { }
+  constructor(public TemperatureType: TemperatureType) { }
 
   ngOnInit(): void {
   }
