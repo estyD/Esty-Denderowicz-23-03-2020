@@ -1,0 +1,43 @@
+<div>
+
+    <p-toast position="top-center" [hideTransitionOptions]="'500ms'"></p-toast>
+
+
+    <div class="search-form" [formGroup]="searchForm">    
+        
+        <p-autoComplete formControlName="city" [suggestions]="cities" field="LocalizedName" (completeMethod)="searchCity($event)" (onSelect)="selectCity($event)"></p-autoComplete>
+        
+        <div *ngIf="f.city.invalid">
+            <div *ngIf="f.city.errors.pattern">English letters only</div>
+        </div>
+
+    </div>
+
+
+
+    <div class="container-condition" *ngIf="currentCity">
+        
+        <div class="city-details">
+
+            <div>
+                <img [src]="">
+                <div>
+                    <div>{{currentCity?.LocalizedName}}</div>
+                    <div>{{currentCondition?.Temperature?.Metric?.Value}}C</div>
+                </div>
+            </div>
+
+            <div class="add-favorite" (click)="setFavorite()">
+                <img src="">
+                <div>Add to Favorites<div>
+            </div>
+        </div>
+
+        <div class="current-condition">{{currentCondition?.WeatherText}}</div>
+
+        <div class="5day-forcasts d-flex">
+            <app-day-forcast *ngFor="let day of dailyForecasts" [day]="day.Date" [temperature]="day.Temperature.Maximum.Value"></app-day-forcast>
+        </div>
+    </div>
+
+</div>
