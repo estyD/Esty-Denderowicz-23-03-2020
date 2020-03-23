@@ -1,0 +1,29 @@
+.favorite {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+    height: 100px;
+}
+
+.favorite-details {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 100%;
+    line-height: 100px;
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.favorite-route {
+    background-color: #0078a7;
+    color: white;
+    height: 100%;
+    font-size: 50px;
+    width: 50px;
+
+    span {
+        line-height: 1.8;
+    }
+}

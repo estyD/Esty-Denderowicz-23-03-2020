@@ -1,11 +1,25 @@
 .search-form {
     padding: 50px;
+    margin: auto;
+    max-width: 1240px;
 }
 
-.condition-container {
-    padding: 20px;
-    margin: 0 50px;
-    border: 1px solid #a6a6a6;
-    border-radius: 3px;
-    background-color: white;
+.city-details {
+    font-size: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.days-forecast {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+
+@media (min-width: 768px) {
+    .condition-container {
+        border: 10px solid #9fce69;
+    }
 }

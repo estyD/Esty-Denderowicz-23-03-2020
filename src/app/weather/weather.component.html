@@ -1,12 +1,12 @@
-<div class="div-container">
+<div class="div-container px-md-5">
 
     <p-toast position="top-center" [hideTransitionOptions]="'500ms'"></p-toast>
 
 
-    <div class="search-form" [formGroup]="searchForm">
+    <div class="search-form py-5 px-md-0" [formGroup]="searchForm">
 
         <p-autoComplete formControlName="city" [suggestions]="cities" field="LocalizedName" (completeMethod)="searchCity($event)"
-            (onSelect)="selectCity($event)"></p-autoComplete>
+            (onSelect)="selectCity($event)" placeholder="Search city" [style]="{'width':'100%', 'max-width': '500px' }" [inputStyle]="{'width':'100%'}"></p-autoComplete>
 
         <div *ngIf="f.city.invalid">
             <div *ngIf="f.city.errors.pattern">English letters only</div>
@@ -18,26 +18,30 @@
 
     <div class="condition-container" *ngIf="currentCity">
 
-        <div class="d-flex justify-content-between flex-warp">
+        <div class="city-details flex-container">
 
             <div class="d-flex">
-                <img src="assets/location.jpg" width="50">
-                <div>
+                <img src="assets/location.png" width="50">
+                <div class="ml-3 my-auto">
                     <div>{{currentCity?.LocalizedName}}</div>
-                    <div>{{currentCondition?.Temperature?.Metric?.Value}}C</div>
+                    <div>{{currentCondition?.Temperature?.Metric?.Value}}<span>℃</span></div>
                 </div>
             </div>
 
-            <div class="add-favorite" (click)="setFavorite()">
-                <img src="">
-                <div>Add to Favorites</div>
+            <div class="d-flex pointer" (click)="setFavorite()">
+                <div *ngIf="!currentCity.isFavorite"><img src="assets/heart.jpg" width="20"> &nbsp; Add to Favorites</div>
+                <div *ngIf="currentCity.isFavorite"><img src="assets/heart.jpg" width="20"> &nbsp; Remove From Favorites</div>
             </div>
         </div>
 
-        <div class="current-condition">{{currentCondition?.WeatherText}}</div>
+        <div class="center-big-text mt-4">
+            {{currentCondition?.WeatherText}} 
+            <span *ngIf="!currentCondition.HasPrecipitation"> No Precipitation</span>
+            <span *ngIf="currentCondition.HasPrecipitation"> {{currentCondition?.PrecipitationIntensity}} {{currentCondition?.PrecipitationType}}</span>
+        </div>
 
-        <div class="5day-forcasts d-flex">
-            <app-day-forcast *ngFor="let day of dailyForecasts" [day]="day.Date" [temperature]="day.Temperature.Maximum.Value"></app-day-forcast>
+        <div class="days-forecast">
+            <app-day-forcast class="mt-5 mx-3" *ngFor="let day of dailyForecasts" [day]="day.Date" [temperature]="day.Temperature.Maximum.Value"></app-day-forcast>
         </div>
     </div>
 

@@ -6,9 +6,10 @@ export class City {
 
     isFavorite: boolean = false;
 
-    constructor(key: string, localizedName: string) {
+    constructor(key: string, localizedName: string, isFavorite?: boolean) {
         this.Key = key;
         this.LocalizedName = localizedName;
+        this.isFavorite = isFavorite;
     }
 }
 

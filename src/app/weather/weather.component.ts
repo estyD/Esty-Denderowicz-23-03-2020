@@ -38,7 +38,7 @@ export class WeatherComponent implements OnInit {
     this.sub = this.route
       .queryParams
       .subscribe(params => {
-        this.currentCity = new City(params['key'] || "215854", params['city'] || "Tel Aviv");
+        this.currentCity = new City(params['key'] || "215854", params['city'] || "Tel Aviv", params['key'] ? true : false);
     });
 
 

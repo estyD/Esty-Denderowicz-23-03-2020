@@ -1,5 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
 .div-container {
-    background-color: #e6e5e5;
+    background-color: #ececec;
+    color: #555a5f;
     min-height: calc(100vh - 76px);
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.center-big-text {
+    text-align: center;
+    font-size: 50px;
+    color: #343a40;
+    padding: 50px 0;
+    font-weight: bold;
+}
+
+.condition-container {
+    padding: 20px;
+    max-width: 1240px;
+    margin: auto;
+    border-radius: 3px;
+    background-color: #c7f395;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12);
 }

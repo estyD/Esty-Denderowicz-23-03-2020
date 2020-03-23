@@ -1,10 +1,15 @@
-<div class="div-container">
+<div class="div-container p-5">
 
-    <div *ngFor="let favorite of FavoriteCities.Cities; let index = index"  routerLink= "../weather" [queryParams]="{ city: favorite.City.LocalizedName, key: favorite.City.Key }">
+    <div *ngIf="FavoriteCities.Cities.length == 0" class="center-big-text">You have no favorites yet...</div>
 
-        <div>{{favorite.City.LocalizedName}}</div>
-        <div>{{favorite.Condition.WeatherText}}</div>
-        <div>{{favorite.Condition.Temperature.Metric.Value}}</div>
+    <div class="condition-container favorite pointer" *ngFor="let favorite of FavoriteCities.Cities; let index = index" routerLink="../weather"
+        [queryParams]="{ city: favorite.City.LocalizedName, key: favorite.City.Key }">
+        <div class="favorite-route"><span><</span></div>
+        <div class="favorite-details">
+            <div>{{favorite.City.LocalizedName}}</div>
+            <div>{{favorite.Condition.Temperature.Metric.Value}}℃</div>
+            <div>{{favorite.Condition.WeatherText}}</div>
+        </div>
     </div>
 
 </div>
