@@ -1,4 +1,4 @@
-<div>
+<div class="div-container">
 
     <div *ngFor="let favorite of FavoriteCities.Cities; let index = index"  routerLink= "../weather" [queryParams]="{ city: favorite.City.LocalizedName, key: favorite.City.Key }">
 

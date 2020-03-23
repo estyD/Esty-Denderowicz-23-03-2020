@@ -1,12 +1,13 @@
-<div>
+<div class="div-container">
 
     <p-toast position="top-center" [hideTransitionOptions]="'500ms'"></p-toast>
 
 
-    <div class="search-form" [formGroup]="searchForm">    
-        
-        <p-autoComplete formControlName="city" [suggestions]="cities" field="LocalizedName" (completeMethod)="searchCity($event)" (onSelect)="selectCity($event)"></p-autoComplete>
-        
+    <div class="search-form" [formGroup]="searchForm">
+
+        <p-autoComplete formControlName="city" [suggestions]="cities" field="LocalizedName" (completeMethod)="searchCity($event)"
+            (onSelect)="selectCity($event)"></p-autoComplete>
+
         <div *ngIf="f.city.invalid">
             <div *ngIf="f.city.errors.pattern">English letters only</div>
         </div>
@@ -15,12 +16,12 @@
 
 
 
-    <div class="container-condition" *ngIf="currentCity">
-        
-        <div class="city-details">
+    <div class="condition-container" *ngIf="currentCity">
 
-            <div>
-                <img [src]="">
+        <div class="d-flex justify-content-between flex-warp">
+
+            <div class="d-flex">
+                <img src="assets/location.jpg" width="50">
                 <div>
                     <div>{{currentCity?.LocalizedName}}</div>
                     <div>{{currentCondition?.Temperature?.Metric?.Value}}C</div>
@@ -29,7 +30,7 @@
 
             <div class="add-favorite" (click)="setFavorite()">
                 <img src="">
-                <div>Add to Favorites<div>
+                <div>Add to Favorites</div>
             </div>
         </div>
 
