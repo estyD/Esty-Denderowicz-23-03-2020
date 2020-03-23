@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import {MessageService} from 'primeng/api';
+import { MessageService } from 'primeng/api';
 
 import { ApiService } from '../api.service'
 import { City, Condition, DailyForecast, FavoriteCities } from './../model/Objects';
@@ -13,7 +13,7 @@ import { City, Condition, DailyForecast, FavoriteCities } from './../model/Objec
   providers: [MessageService]
 })
 export class WeatherComponent implements OnInit {
-  
+
   cities: City[];
   searchForm: FormGroup;
   get f() { return this.searchForm.controls; }
@@ -24,7 +24,7 @@ export class WeatherComponent implements OnInit {
 
   sub;
 
-  constructor(private fb: FormBuilder, private messageService: MessageService, 
+  constructor(private fb: FormBuilder, private messageService: MessageService,
     public apiService: ApiService, public FavoriteCities: FavoriteCities, private route: ActivatedRoute) {
   }
 
@@ -38,8 +38,27 @@ export class WeatherComponent implements OnInit {
     this.sub = this.route
       .queryParams
       .subscribe(params => {
-        this.currentCity = new City(params['key'] || "215854", params['city'] || "Tel Aviv", params['key'] ? true : false);
-    });
+
+        // if (params['key']) {
+          this.currentCity = new City(params['key'] || "215854", params['city'] || "Tel Aviv", params['key'] ? true : false);
+        // }
+
+        // else if (!navigator.geolocation) {
+        //   this.messageService.add({ severity: 'error', summary: 'Geolocation Error', detail: 'Geolocation is not supported by your browser' });
+        // }
+
+        // else {
+        //   navigator.geolocation.getCurrentPosition(
+        //     (data: any) => {
+        //       this.searchCityByGeoPosition(data["coords"]["latitude"], data["coords"]["longitude"])
+        //     },
+        //     error => {
+        //       this.messageService.add({ severity: 'error', summary: 'Geolocation Error', detail: 'Geolocation is not supported by your browser' });
+        //     }
+        //   );
+        // }
+
+      });
 
 
     // this.selectCity(this.currentCity);
@@ -53,6 +72,20 @@ export class WeatherComponent implements OnInit {
     ];
   }
 
+  searchCityByGeoPosition(lat, long) {
+
+    this.apiService.getCitiesByGeoPosition(lat, long)
+      .subscribe(
+        (data: any) => {
+          this.currentCity = data;
+          this.selectCity(this.currentCity);
+        },
+        error => {
+          this.messageService.add({ severity: 'error', summary: 'Server Error', detail: error });
+        }
+      );
+  }
+
   searchCity(event) {
 
     if (this.searchForm.invalid) {
@@ -60,14 +93,14 @@ export class WeatherComponent implements OnInit {
     }
 
     this.apiService.getCities(event.query)
-    .subscribe(
-      (data: any) => {
+      .subscribe(
+        (data: any) => {
           this.cities = data;
-      },
-      error => {
-        this.messageService.add({severity:'error', summary:'Server Error', detail: error});
-      }
-    );
+        },
+        error => {
+          this.messageService.add({ severity: 'error', summary: 'Server Error', detail: error });
+        }
+      );
   }
 
   selectCity(event: City) {
@@ -75,24 +108,24 @@ export class WeatherComponent implements OnInit {
     this.currentCity = event;
 
     this.apiService.getCurrentCondition(this.currentCity.Key)
-    .subscribe(
-      (data: any) => {
+      .subscribe(
+        (data: any) => {
           this.currentCondition = data[0];
-      },
-      error => {
-          this.messageService.add({severity:'error', summary:'Server Error', detail: error});
-      }
-    );
+        },
+        error => {
+          this.messageService.add({ severity: 'error', summary: 'Server Error', detail: error });
+        }
+      );
 
     this.apiService.get5DaysForecasts(this.currentCity.Key)
-    .subscribe(
-      (data: any) => {
+      .subscribe(
+        (data: any) => {
           this.dailyForecasts = data["DailyForecasts"];
-      },
-      error => {          
-        this.messageService.add({severity:'error', summary:'Server Error', detail: error});
-      }
-    );
+        },
+        error => {
+          this.messageService.add({ severity: 'error', summary: 'Server Error', detail: error });
+        }
+      );
 
   }
 
@@ -101,7 +134,7 @@ export class WeatherComponent implements OnInit {
     this.currentCity.isFavorite = !this.currentCity.isFavorite;
 
     if (this.currentCity.isFavorite) {
-      this.FavoriteCities.Cities.push( {City: this.currentCity, Condition: this.currentCondition});
+      this.FavoriteCities.Cities.push({ City: this.currentCity, Condition: this.currentCondition });
     }
     else {
       this.FavoriteCities.Cities = this.FavoriteCities.Cities.filter(city => city.City.Key != this.currentCity.Key);

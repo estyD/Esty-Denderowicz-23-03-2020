@@ -11,9 +11,16 @@ export class ApiService {
   private url = "http://dataservice.accuweather.com/";
   private APIKey = "UmYeAyaujF32MGqZvaZnRNwnngm1HuSj";
 
-  constructor(private httpClient: HttpClient) {
+  constructor(private httpClient: HttpClient) { }
 
-    //this.url = 'assets/config.json';
+  public getCitiesByGeoPosition(lat: string, long: string): Observable<any> { 
+
+    let getCitiesURL = `${this.url}locations/v1/cities/geoposition/search?apikey=${this.APIKey}&q=${lat},${long}`;
+
+    return this.httpClient.get(getCitiesURL)
+      .pipe( 
+          catchError(this.handleError)
+      );
   }
 
   public getCities(searchText: string): Observable<any> { 
