@@ -6,13 +6,14 @@
     <!--View all favorites, each one can link to main page  -->
     <div class="condition-container favorite pointer" *ngFor="let favorite of FavoriteCities.Cities; let index = index" routerLink="../weather"
         [queryParams]="{ city: favorite.City.LocalizedName, key: favorite.City.Key }">
-        <div class="favorite-route"><span><</span></div>
+        <div class="favorite-route"><span class="pl-2"><</span></div>
         <div class="favorite-details">
             <div>{{favorite.City.LocalizedName}}</div>
             <div *ngIf="TemperatureType.Celsius">{{favorite.Condition.Temperature.Metric.Value}}°C</div>
             <div *ngIf="!TemperatureType.Celsius">{{favorite.Condition.Temperature.Imperial.Value}}°F</div>
             <div>{{favorite.Condition.WeatherText}}</div>
         </div>
+        <img class="blue-heart" src="assets/heart-blue.png" width="40">
     </div>
 
 </div>

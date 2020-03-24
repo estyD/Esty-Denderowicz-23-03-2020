@@ -10,7 +10,7 @@ import { TemperatureType } from './model/Objects';
 })
 export class AppComponent {
 
-  //Declare the values for select temperature-type select
+  //Declare the values for select temperature-type
 
   types: SelectItem[];
   SelectType = true;

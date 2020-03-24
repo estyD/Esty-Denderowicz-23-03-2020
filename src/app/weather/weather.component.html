@@ -6,8 +6,12 @@
     <!--Search form  -->
     <div class="search-form py-5 px-md-0" [formGroup]="searchForm">
 
-        <p-autoComplete formControlName="city" [suggestions]="cities" field="LocalizedName" (completeMethod)="searchCity($event)"
-            (onSelect)="selectCity($event)" placeholder="Search city" [style]="{'width':'100%', 'max-width': '500px' }" [inputStyle]="{'width':'100%'}"></p-autoComplete>
+        <div>
+            <p-autoComplete formControlName="city" [suggestions]="cities" field="LocalizedName" (completeMethod)="searchCity($event)"
+                (onSelect)="selectCity($event)" placeholder="Search city" [style]="{'width':'calc(100% - 40px)', 'max-width': '500px' }" [inputStyle]="{'width':'100%'}"></p-autoComplete>
+
+            <img src="assets/search.png" width="20" class="ml-3">
+        </div>
 
         <div *ngIf="f.city.invalid">
             <div *ngIf="f.city.errors.pattern">English letters only</div>
@@ -32,8 +36,8 @@
 
             <!--'Add to favorites' button  -->
             <div class="d-flex pointer" (click)="setFavorite()">
-                <div *ngIf="!currentCity.isFavorite"><img src="assets/heart.jpg" width="20"> &nbsp; Add to Favorites</div>
-                <div *ngIf="currentCity.isFavorite"><img src="assets/heart.jpg" width="20"> &nbsp; Remove From Favorites</div>
+                <div *ngIf="!currentCity.isFavorite"><img src="assets/heart.png" width="30"> &nbsp; Add to Favorites</div>
+                <div *ngIf="currentCity.isFavorite"><img src="assets/heart-blue.png" width="30"> &nbsp; Remove From Favorites</div>
             </div>
         </div>
 
