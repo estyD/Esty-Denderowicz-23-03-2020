@@ -13,7 +13,7 @@
             <img src="assets/search.png" width="20" class="ml-3">
         </div>
 
-        <div *ngIf="f.city.invalid">
+        <div *ngIf="f.city.invalid" class="error">
             <div *ngIf="f.city.errors.pattern">English letters only</div>
         </div>
 

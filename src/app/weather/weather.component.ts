@@ -58,35 +58,26 @@ export class WeatherComponent implements OnInit {
       .queryParams
       .subscribe(params => {
 
-        // if (params['key']) {
+        if (params['key']) {
           this.currentCity = new City(params['key'], params['city'], true);
-          this.currentCondition = new Condition("Clear", false, null, null, 11.6, 33);
-    this.dailyForecasts = [
-      new DailyForecast(new Date("2020-03-22T07:00:00+02:00"), 18.4, 8.3),
-      new DailyForecast(new Date("2020-03-23T07:00:00+02:00"), 23.4, 15.2),
-      new DailyForecast(new Date("2020-03-24T07:00:00+02:00"), 22.4, 12.3),
-      new DailyForecast(new Date("2020-03-25T07:00:00+02:00"), 20.4, 11.3),
-      new DailyForecast(new Date("2020-03-26T07:00:00+02:00"), 24.4, 16.3),
-    ];
-          this.FavoriteCities.Cities.push({ City: this.currentCity, Condition: this.currentCondition });
 
-          // this.selectCity(this.currentCity);
-        // }
+          this.selectCity(this.currentCity);
+        }
 
-        // else if (!navigator.geolocation) {
-        //   this.messageService.add({ severity: 'error', summary: 'Geolocation Error', detail: 'Geolocation is not supported by your browser' });
-        // }
+        else if (!navigator.geolocation) {
+          this.messageService.add({ severity: 'error', summary: 'Geolocation Error', detail: 'Geolocation is not supported by your browser' });
+        }
 
-        // else {
-        //   navigator.geolocation.getCurrentPosition(
-        //     (data: any) => {
-        //       this.searchCityByGeoPosition(data["coords"]["latitude"], data["coords"]["longitude"])
-        //     },
-        //     error => {
-        //       this.messageService.add({ severity: 'error', summary: 'Geolocation Error', detail: 'Geolocation is not supported by your browser' });
-        //     }
-        //   );
-        // }
+        else {
+          navigator.geolocation.getCurrentPosition(
+            (data: any) => {
+              this.searchCityByGeoPosition(data["coords"]["latitude"], data["coords"]["longitude"])
+            },
+            error => {
+              this.messageService.add({ severity: 'error', summary: 'Geolocation Error', detail: 'Geolocation is not supported by your browser' });
+            }
+          );
+        }
 
       });
   }
