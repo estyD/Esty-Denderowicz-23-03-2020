@@ -9,7 +9,7 @@ import { BehaviorSubject, Observable, throwError } from 'rxjs';
 export class ApiService {
 
   private url = "https://dataservice.accuweather.com/";
-  private APIKey = "UmYeAyaujF32MGqZvaZnRNwnngm1HuSj";
+  private APIKey = "MtoQd62TAl5buckrt5EXkWw46h76WdNq";
 
   constructor(private httpClient: HttpClient) { }
 

@@ -87,7 +87,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         this.httpClient = httpClient;
         this.url = "https://dataservice.accuweather.com/";
-        this.APIKey = "UmYeAyaujF32MGqZvaZnRNwnngm1HuSj";
+        this.APIKey = "MtoQd62TAl5buckrt5EXkWw46h76WdNq";
       } //Get City key By Geo-Position from API
 
 
@@ -1949,6 +1949,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         value: function selectCity(event) {
           var _this4 = this;
 
+          this.f.city.setValue(event.LocalizedName);
           this.currentCity = event;
           this.apiService.getCurrentCondition(this.currentCity.Key).subscribe(function (data) {
             _this4.currentCondition = data[0];

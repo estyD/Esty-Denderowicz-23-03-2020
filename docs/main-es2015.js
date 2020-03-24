@@ -45,7 +45,7 @@ class ApiService {
     constructor(httpClient) {
         this.httpClient = httpClient;
         this.url = "https://dataservice.accuweather.com/";
-        this.APIKey = "UmYeAyaujF32MGqZvaZnRNwnngm1HuSj";
+        this.APIKey = "MtoQd62TAl5buckrt5EXkWw46h76WdNq";
     }
     //Get City key By Geo-Position from API
     getCitiesByGeoPosition(lat, long) {
@@ -731,6 +731,7 @@ class WeatherComponent {
     }
     //Get the current weather of the searched location or default location.
     selectCity(event) {
+        this.f.city.setValue(event.LocalizedName);
         this.currentCity = event;
         this.apiService.getCurrentCondition(this.currentCity.Key)
             .subscribe((data) => {
