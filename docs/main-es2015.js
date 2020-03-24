@@ -44,7 +44,7 @@ __webpack_require__.r(__webpack_exports__);
 class ApiService {
     constructor(httpClient) {
         this.httpClient = httpClient;
-        this.url = "http://dataservice.accuweather.com/";
+        this.url = "https://dataservice.accuweather.com/";
         this.APIKey = "UmYeAyaujF32MGqZvaZnRNwnngm1HuSj";
     }
     //Get City key By Geo-Position from API

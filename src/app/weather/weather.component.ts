@@ -123,6 +123,8 @@ export class WeatherComponent implements OnInit {
   //Get the current weather of the searched location or default location.
   selectCity(event: City) {
 
+    this.f.city.setValue(event.LocalizedName);
+    
     this.currentCity = event;
 
     this.apiService.getCurrentCondition(this.currentCity.Key)

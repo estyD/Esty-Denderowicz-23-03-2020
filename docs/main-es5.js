@@ -86,7 +86,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         _classCallCheck(this, ApiService);
 
         this.httpClient = httpClient;
-        this.url = "http://dataservice.accuweather.com/";
+        this.url = "https://dataservice.accuweather.com/";
         this.APIKey = "UmYeAyaujF32MGqZvaZnRNwnngm1HuSj";
       } //Get City key By Geo-Position from API
 
