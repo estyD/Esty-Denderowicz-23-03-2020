@@ -65,7 +65,7 @@
 
   /***/
   function node_modulesAngularDevkitBuildAngularSrcAngularCliFilesPluginsRawCssLoaderJsNode_modulesPostcssLoaderSrcIndexJsNode_modulesSassLoaderDistCjsJsSrcStylesScss(module, exports) {
-    module.exports = [[module.i, ".div-container {\n  background-color: #ececec;\n  color: #555a5f;\n  min-height: calc(100vh - 76px);\n}\n\n.pointer {\n  cursor: pointer;\n}\n\n.center-big-text {\n  text-align: center;\n  font-size: 50px;\n  color: #343a40;\n  padding: 50px 0;\n  font-weight: bold;\n}\n\n.condition-container {\n  padding: 20px;\n  max-width: 1240px;\n  margin: auto;\n  border-radius: 3px;\n  background-color: #c7f395;\n  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12);\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9DOlxcVXNlcnNcXFVTRVItM1xcRG9jdW1lbnRzXFxHaXRIdWJcXEVzdHktRGVuZGVyb3dpY3otMjMtMDMtMjAyMC9zcmNcXHN0eWxlcy5zY3NzIiwic3JjL3N0eWxlcy5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUNBO0VBQ0kseUJBQUE7RUFDQSxjQUFBO0VBQ0EsOEJBQUE7QUNBSjs7QURHQTtFQUNJLGVBQUE7QUNBSjs7QURHQTtFQUNJLGtCQUFBO0VBQ0EsZUFBQTtFQUNBLGNBQUE7RUFDQSxlQUFBO0VBQ0EsaUJBQUE7QUNBSjs7QURHQTtFQUNJLGFBQUE7RUFDQSxpQkFBQTtFQUNBLFlBQUE7RUFDQSxrQkFBQTtFQUNBLHlCQUFBO0VBQ0EsK0dBQUE7QUNBSiIsImZpbGUiOiJzcmMvc3R5bGVzLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJcclxuLmRpdi1jb250YWluZXIge1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogI2VjZWNlYztcclxuICAgIGNvbG9yOiAjNTU1YTVmO1xyXG4gICAgbWluLWhlaWdodDogY2FsYygxMDB2aCAtIDc2cHgpO1xyXG59XHJcblxyXG4ucG9pbnRlciB7XHJcbiAgICBjdXJzb3I6IHBvaW50ZXI7XHJcbn1cclxuXHJcbi5jZW50ZXItYmlnLXRleHQge1xyXG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gICAgZm9udC1zaXplOiA1MHB4O1xyXG4gICAgY29sb3I6ICMzNDNhNDA7XHJcbiAgICBwYWRkaW5nOiA1MHB4IDA7XHJcbiAgICBmb250LXdlaWdodDogYm9sZDtcclxufVxyXG5cclxuLmNvbmRpdGlvbi1jb250YWluZXIge1xyXG4gICAgcGFkZGluZzogMjBweDtcclxuICAgIG1heC13aWR0aDogMTI0MHB4O1xyXG4gICAgbWFyZ2luOiBhdXRvO1xyXG4gICAgYm9yZGVyLXJhZGl1czogM3B4O1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogI2M3ZjM5NTtcclxuICAgIGJveC1zaGFkb3c6IDAgMXB4IDNweCAwIHJnYmEoMCwgMCwgMCwgMC4yKSwgMCAxcHggMXB4IDAgcmdiYSgwLCAwLCAwLCAwLjE0KSwgMCAycHggMXB4IC0xcHggcmdiYSgwLCAwLCAwLCAwLjEyKTtcclxufSIsIi5kaXYtY29udGFpbmVyIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogI2VjZWNlYztcbiAgY29sb3I6ICM1NTVhNWY7XG4gIG1pbi1oZWlnaHQ6IGNhbGMoMTAwdmggLSA3NnB4KTtcbn1cblxuLnBvaW50ZXIge1xuICBjdXJzb3I6IHBvaW50ZXI7XG59XG5cbi5jZW50ZXItYmlnLXRleHQge1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIGZvbnQtc2l6ZTogNTBweDtcbiAgY29sb3I6ICMzNDNhNDA7XG4gIHBhZGRpbmc6IDUwcHggMDtcbiAgZm9udC13ZWlnaHQ6IGJvbGQ7XG59XG5cbi5jb25kaXRpb24tY29udGFpbmVyIHtcbiAgcGFkZGluZzogMjBweDtcbiAgbWF4LXdpZHRoOiAxMjQwcHg7XG4gIG1hcmdpbjogYXV0bztcbiAgYm9yZGVyLXJhZGl1czogM3B4O1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjYzdmMzk1O1xuICBib3gtc2hhZG93OiAwIDFweCAzcHggMCByZ2JhKDAsIDAsIDAsIDAuMiksIDAgMXB4IDFweCAwIHJnYmEoMCwgMCwgMCwgMC4xNCksIDAgMnB4IDFweCAtMXB4IHJnYmEoMCwgMCwgMCwgMC4xMik7XG59Il19 */", '', '']];
+    module.exports = [[module.i, ".div-container {\n  background-color: #ececec;\n  color: #555a5f;\n  min-height: calc(100vh - 76px);\n}\n\n.pointer {\n  cursor: pointer;\n}\n\n.center-big-text {\n  text-align: center;\n  font-size: 50px;\n  color: #343a40;\n  padding: 50px 0;\n  font-weight: bold;\n}\n\n.condition-container {\n  padding: 20px;\n  max-width: 1240px;\n  margin: auto;\n  border-radius: 3px;\n  background-color: #c7f395;\n  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12);\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9hZG1pbnRpZGUvRG9jdW1lbnRzL0dpdEh1Yi9Fc3R5LURlbmRlcm93aWN6LTIzLTAzLTIwMjAvc3JjL3N0eWxlcy5zY3NzIiwic3JjL3N0eWxlcy5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUNBO0VBQ0kseUJBQUE7RUFDQSxjQUFBO0VBQ0EsOEJBQUE7QUNBSjs7QURHQTtFQUNJLGVBQUE7QUNBSjs7QURHQTtFQUNJLGtCQUFBO0VBQ0EsZUFBQTtFQUNBLGNBQUE7RUFDQSxlQUFBO0VBQ0EsaUJBQUE7QUNBSjs7QURHQTtFQUNJLGFBQUE7RUFDQSxpQkFBQTtFQUNBLFlBQUE7RUFDQSxrQkFBQTtFQUNBLHlCQUFBO0VBQ0EsK0dBQUE7QUNBSiIsImZpbGUiOiJzcmMvc3R5bGVzLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJcbi5kaXYtY29udGFpbmVyIHtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjZWNlY2VjO1xuICAgIGNvbG9yOiAjNTU1YTVmO1xuICAgIG1pbi1oZWlnaHQ6IGNhbGMoMTAwdmggLSA3NnB4KTtcbn1cblxuLnBvaW50ZXIge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbn1cblxuLmNlbnRlci1iaWctdGV4dCB7XG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xuICAgIGZvbnQtc2l6ZTogNTBweDtcbiAgICBjb2xvcjogIzM0M2E0MDtcbiAgICBwYWRkaW5nOiA1MHB4IDA7XG4gICAgZm9udC13ZWlnaHQ6IGJvbGQ7XG59XG5cbi5jb25kaXRpb24tY29udGFpbmVyIHtcbiAgICBwYWRkaW5nOiAyMHB4O1xuICAgIG1heC13aWR0aDogMTI0MHB4O1xuICAgIG1hcmdpbjogYXV0bztcbiAgICBib3JkZXItcmFkaXVzOiAzcHg7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogI2M3ZjM5NTtcbiAgICBib3gtc2hhZG93OiAwIDFweCAzcHggMCByZ2JhKDAsIDAsIDAsIDAuMiksIDAgMXB4IDFweCAwIHJnYmEoMCwgMCwgMCwgMC4xNCksIDAgMnB4IDFweCAtMXB4IHJnYmEoMCwgMCwgMCwgMC4xMik7XG59IiwiLmRpdi1jb250YWluZXIge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjZWNlY2VjO1xuICBjb2xvcjogIzU1NWE1ZjtcbiAgbWluLWhlaWdodDogY2FsYygxMDB2aCAtIDc2cHgpO1xufVxuXG4ucG9pbnRlciB7XG4gIGN1cnNvcjogcG9pbnRlcjtcbn1cblxuLmNlbnRlci1iaWctdGV4dCB7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgZm9udC1zaXplOiA1MHB4O1xuICBjb2xvcjogIzM0M2E0MDtcbiAgcGFkZGluZzogNTBweCAwO1xuICBmb250LXdlaWdodDogYm9sZDtcbn1cblxuLmNvbmRpdGlvbi1jb250YWluZXIge1xuICBwYWRkaW5nOiAyMHB4O1xuICBtYXgtd2lkdGg6IDEyNDBweDtcbiAgbWFyZ2luOiBhdXRvO1xuICBib3JkZXItcmFkaXVzOiAzcHg7XG4gIGJhY2tncm91bmQtY29sb3I6ICNjN2YzOTU7XG4gIGJveC1zaGFkb3c6IDAgMXB4IDNweCAwIHJnYmEoMCwgMCwgMCwgMC4yKSwgMCAxcHggMXB4IDAgcmdiYSgwLCAwLCAwLCAwLjE0KSwgMCAycHggMXB4IC0xcHggcmdiYSgwLCAwLCAwLCAwLjEyKTtcbn0iXX0= */", '', '']];
     /***/
   },
 
@@ -541,23 +541,23 @@
   /***/
   function _(module, exports, __webpack_require__) {
     __webpack_require__(
-    /*! C:\Users\USER-3\Documents\GitHub\Esty-Denderowicz-23-03-2020\src\styles.scss */
+    /*! /Users/admintide/Documents/GitHub/Esty-Denderowicz-23-03-2020/src/styles.scss */
     "./src/styles.scss");
 
     __webpack_require__(
-    /*! C:\Users\USER-3\Documents\GitHub\Esty-Denderowicz-23-03-2020\node_modules\bootstrap\dist\css\bootstrap.min.css */
+    /*! /Users/admintide/Documents/GitHub/Esty-Denderowicz-23-03-2020/node_modules/bootstrap/dist/css/bootstrap.min.css */
     "./node_modules/bootstrap/dist/css/bootstrap.min.css");
 
     __webpack_require__(
-    /*! C:\Users\USER-3\Documents\GitHub\Esty-Denderowicz-23-03-2020\node_modules\primeicons\primeicons.css */
+    /*! /Users/admintide/Documents/GitHub/Esty-Denderowicz-23-03-2020/node_modules/primeicons/primeicons.css */
     "./node_modules/primeicons/primeicons.css");
 
     __webpack_require__(
-    /*! C:\Users\USER-3\Documents\GitHub\Esty-Denderowicz-23-03-2020\node_modules\primeng\resources\themes\nova-light\theme.css */
+    /*! /Users/admintide/Documents/GitHub/Esty-Denderowicz-23-03-2020/node_modules/primeng/resources/themes/nova-light/theme.css */
     "./node_modules/primeng/resources/themes/nova-light/theme.css");
 
     module.exports = __webpack_require__(
-    /*! C:\Users\USER-3\Documents\GitHub\Esty-Denderowicz-23-03-2020\node_modules\primeng\resources\primeng.min.css */
+    /*! /Users/admintide/Documents/GitHub/Esty-Denderowicz-23-03-2020/node_modules/primeng/resources/primeng.min.css */
     "./node_modules/primeng/resources/primeng.min.css");
     /***/
   }
